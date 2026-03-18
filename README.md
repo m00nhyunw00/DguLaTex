@@ -1,16 +1,125 @@
-# React + Vite
+﻿<img src = "image/banner.png">
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+# 👩🏻‍💻 DguLaTex 
+```
+DguLatex는 동국대학교 학생 전용 웹 기반 LaTex 편집 협업툴을 최종 목표로 하고 있습니다.
+기본적인 LaTex 협업 기능 외에도 차별화된 기능을 추가할 예정입니다.  
+```
 
-Currently, two official plugins are available:
+## 🍎 프로젝트 소개
+```
+2026-1 종합설계프로젝트1 강의에서 진행한 프로젝트입니다.
+2026.03.06 ~ 2026.0x.xx
+```
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## 🙆🏻‍♀️ Team
+✨ **2023-2-OSSP1-DguHeroes-2** ✨
+| 팀 | 이름 | 전공 | 역할  | 깃허브 아이디 |
+|----| ----- | ----- | -------- | ------- |
+| 팀장 | 문현우 | 컴퓨터·AI학부 |   | m00nhyunw00 |
+| 팀원 | 정서영 | 컴퓨터·AI학부 |   |  |
+| 팀원 | 오재원 | 컬티미디어공학과 |   |  |
 
-## React Compiler
+## 1. 개발 환경 및 기술 스택
+**✨Front** <br>
+<img src="https://img.shields.io/badge/React-61DAFB?style=for-the-badge&logo=React&logoColor=black">
+<img src="https://img.shields.io/badge/Css-1572B6?style=for-the-badge&logo=Css&logoColor=white">
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
 
-## Expanding the ESLint configuration
+**✨Back** <br>
+<img src="">
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+
+
+## 2. 프로젝트 전체 구조
+<img src = "">
+
+
+## 3. 프로젝트 디렉토리 구조
+<details>
+<summary>Frontend 구조 확인하기</summary>
+<div markdown="1">
+
+```
+
+```
+
+</div>
+</details>
+
+<details>
+<summary>Backend 구조 확인하기</summary>
+<div markdown="1">
+
+```
+
+```
+
+</div>
+</details>
+
+<details>
+
+</div>
+</details>
+
+## 4. 기능 소개
+
+```
+-
+-
+-
+```
+
+
+## ✏️ 사용법 
+**✨Git Clone**
+```git
+git clone https://github.com/m00nhyunw00/DguLaTex
+```
+
+**✨Before Run**
+1. Node.js 공식 사이트 접속: https://nodejs.org
+2. LTS(Long Term Support) 버전 다운로드 & 설치
+3. 설치 중 “PATH에 Node 추가” 옵션 체크 확인
+4. 설치 확인:
+```linux
+node -v
+npm -v
+```
+5. 프로젝트 폴더로 경로 이동하여 부트스트랩 설치
+```linux
+npm install bootstrap
+```
+
+**✨Run Project**
+```linux
+npm run dev
+// npm package 설치 필요
+```
+
+## 🌴 Branch
+| 이름 | 설명 |
+| --- | --- |
+| main | PR을 거쳐 오류가 없는 브랜치 |
+| back | BE 기능 개발 및 관리 |
+| front | FE 기능 개발 및 관리 |
+
+
+## 🎯 Commit Convention
+| 제목 | 설명 |
+| --- | --- |
+| Feat: | 새로운 기능 추가 |
+| Fix: | 버그 수정 |
+| Docs: | 문서 수정 |
+| Update: | 기타 업데이트 |
+| Style: | 코드 포맷 변경, 세미콜론 누락, 코드 변경 없음 |
+| Refactor: | 프로덕션 코드 리팩터링 |
+| Comment: | 주석 생성, 수정 및 삭제 |
+| Test: | 테스트 추가, 테스트 코드 리팩터링, 프로덕션 코드 변경 없음 |
+| Chore: | 빌드 테스크 업데이트, 패키지 매니저 환경설정, 프로덕션 코드 변경 없음 |
+
+## 🎀 Meeting Miutes
+[회의록 확인](https://www.notion.so/655509cd9cbf82e7832e01447da3d796?source=copy_link)
+
+
