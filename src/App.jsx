@@ -1,168 +1,58 @@
-﻿//import { useState } from 'react'
-//import reactLogo from './assets/react.svg'
-//import viteLogo from './assets/vite.svg'
-//import heroImg from './assets/hero.png'
-//import './App.css'
-
-//function App() {
-//  const [count, setCount] = useState(0)
-
-//  return (
-//    <>
-//      <section id="center">
-//        <div className="hero">
-//          <img src={heroImg} className="base" width="170" height="179" alt="" />
-//          <img src={reactLogo} className="framework" alt="React logo" />
-//          <img src={viteLogo} className="vite" alt="Vite logo" />
-//        </div>
-//        <div>
-//          <h1>Get started</h1>
-//          <p>
-//            Edit <code>src/App.jsx</code> and save to test <code>HMR</code>
-//          </p>
-//        </div>
-//        <button
-//          className="counter"
-//          onClick={() => setCount((count) => count + 1)}
-//        >
-//          Count is {count}
-//        </button>
-//      </section>
-
-//      <div className="ticks"></div>
-
-//      <section id="next-steps">
-//        <div id="docs">
-//          <svg className="icon" role="presentation" aria-hidden="true">
-//            <use href="/icons.svg#documentation-icon"></use>
-//          </svg>
-//          <h2>Documentation</h2>
-//          <p>Your questions, answered</p>
-//          <ul>
-//            <li>
-//              <a href="https://vite.dev/" target="_blank">
-//                <img className="logo" src={viteLogo} alt="" />
-//                Explore Vite
-//              </a>
-//            </li>
-//            <li>
-//              <a href="https://react.dev/" target="_blank">
-//                <img className="button-icon" src={reactLogo} alt="" />
-//                Learn more
-//              </a>
-//            </li>
-//          </ul>
-//        </div>
-//        <div id="social">
-//          <svg className="icon" role="presentation" aria-hidden="true">
-//            <use href="/icons.svg#social-icon"></use>
-//          </svg>
-//          <h2>Connect with us</h2>
-//          <p>Join the Vite community</p>
-//          <ul>
-//            <li>
-//              <a href="https://github.com/vitejs/vite" target="_blank">
-//                <svg
-//                  className="button-icon"
-//                  role="presentation"
-//                  aria-hidden="true"
-//                >
-//                  <use href="/icons.svg#github-icon"></use>
-//                </svg>
-//                GitHub
-//              </a>
-//            </li>
-//            <li>
-//              <a href="https://chat.vite.dev/" target="_blank">
-//                <svg
-//                  className="button-icon"
-//                  role="presentation"
-//                  aria-hidden="true"
-//                >
-//                  <use href="/icons.svg#discord-icon"></use>
-//                </svg>
-//                Discord
-//              </a>
-//            </li>
-//            <li>
-//              <a href="https://x.com/vite_js" target="_blank">
-//                <svg
-//                  className="button-icon"
-//                  role="presentation"
-//                  aria-hidden="true"
-//                >
-//                  <use href="/icons.svg#x-icon"></use>
-//                </svg>
-//                X.com
-//              </a>
-//            </li>
-//            <li>
-//              <a href="https://bsky.app/profile/vite.dev" target="_blank">
-//                <svg
-//                  className="button-icon"
-//                  role="presentation"
-//                  aria-hidden="true"
-//                >
-//                  <use href="/icons.svg#bluesky-icon"></use>
-//                </svg>
-//                Bluesky
-//              </a>
-//            </li>
-//          </ul>
-//        </div>
-//      </section>
-
-//      <div className="ticks"></div>
-//      <section id="spacer"></section>
-//    </>
-//  )
-//}
-
-//export default App
-
-import { useState } from 'react';
+﻿import { useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-function LoginPage() {
+function App() {
+    // 1. 로그인 여부를 관리하는 상태 추가
+    const [isLoggedIn, setIsLoggedIn] = useState(false);
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
 
-    const handleLogin = async (e) => {
+    const handleLogin = (e) => {
         e.preventDefault();
 
-        // 예시: 실제로는 여기서 API 호출
-        // fetch('/api/login', { method: 'POST', body: JSON.stringify({ email, password }) })
-        //   .then(...)
-        //   .catch(...)
-
-        if (email === 'student@example.com' && password === '1234') {
-            alert('로그인 성공!');
+        // 2. 'dgu' 아이디와 '1234' 비밀번호 체크 로직 (테스팅용 마스터 계정)
+        if (email === 'dgu' && password === '1234') {
+            setIsLoggedIn(true); // 로그인 성공 상태로 변경
             setError('');
-            // 여기서 리다이렉트 가능
         } else {
-            setError('이메일 또는 비밀번호가 잘못되었습니다.');
+            setError('아이디 또는 비밀번호가 잘못되었습니다.');
         }
     };
 
-    const handleSchoolLogin = () => {
-        // 나중에 OAuth 로그인 연결 예정
-        alert('학교 계정 로그인 기능 구현 예정');
+    const handleLogout = () => {
+        setIsLoggedIn(false); // 다시 로그인 화면으로 돌아가기
+        setEmail('');
+        setPassword('');
     };
 
+    // 3. 로그인 성공 시 보여줄 "빈 페이지" (조건부 렌더링)
+    if (isLoggedIn) {
+        return (
+            <div className="d-flex flex-column justify-content-center align-items-center vh-100 bg-white">
+                <h2 className="mb-4">로그인을 성공하였습니다.</h2>
+                <button className="btn btn-secondary" onClick={handleLogout}>
+                    로그인 화면으로 돌아가기
+                </button>
+            </div>
+        );
+    }
+
+    // 4. 로그인 전 보여줄 "로그인 화면"
     return (
         <div className="d-flex justify-content-center align-items-center vh-100 bg-light">
             <div className="card p-4 shadow" style={{ width: '350px' }}>
                 <h3 className="card-title text-center mb-3">로그인</h3>
 
-                {error && <div className="alert alert-danger">{error}</div>}
+                {error && <div className="alert alert-danger p-2" style={{ fontSize: '0.9rem' }}>{error}</div>}
 
                 <form onSubmit={handleLogin}>
                     <div className="mb-3">
-                        <label className="form-label">이메일</label>
+                        <label className="form-label">아이디</label>
                         <input
-                            type="email"
+                            type="text" // 이메일 형식이 아닌 'moon'을 쓰기 위해 text로 변경
                             className="form-control"
+                            placeholder="아이디를 입력하세요"
                             value={email}
                             onChange={(e) => setEmail(e.target.value)}
                             required
@@ -174,6 +64,7 @@ function LoginPage() {
                         <input
                             type="password"
                             className="form-control"
+                            placeholder="비밀번호를 입력하세요"
                             value={password}
                             onChange={(e) => setPassword(e.target.value)}
                             required
@@ -184,18 +75,9 @@ function LoginPage() {
                         로그인
                     </button>
                 </form>
-
-                <hr />
-
-                <button
-                    onClick={handleSchoolLogin}
-                    className="btn btn-outline-secondary w-100 mt-2"
-                >
-                    학교 계정으로 로그인
-                </button>
             </div>
         </div>
     );
 }
 
-export default LoginPage;
+export default App;
