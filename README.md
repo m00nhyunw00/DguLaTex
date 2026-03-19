@@ -111,9 +111,9 @@ npm run dev
 | 이름 | 설명 |
 | --- | --- |
 | main | 항상 배포 가능한 안정적인 상태를 유지하는 브랜치 |
-| develop (default) | 모든 기능 개발이 통합되는 브랜치로, 다음 배포를 준비하는 개발 기준 브랜치로, 배포 버전 완성 시 main으로 병합 |
-| feature/ | 개별 기능 개발을 위한 임시 브랜치로, develop 브랜치로부터 분기하여 생성 후 작업 완료 시 develop으로 병합 |
-| docs | README 파일 등 단순 문서 작업을 위한 브랜치로, 작업 완료 시 develop으로 병합 |
+| develop <br> (default) | 모든 기능 개발이 통합되는 브랜치로, <br>다음 배포를 준비하는 개발 기준 브랜치로, 배포 버전 완성 시 main으로 병합 |
+| feature/ | 개별 기능 개발을 위한 임시 브랜치로, <br> develop 브랜치로부터 분기하여 생성 후 작업 완료 시 develop으로 병합 |
+| docs | README 파일 등 단순 문서 작업을 위한 브랜치로, <br> 작업 완료 시 develop으로 병합 |
 
 
 ## 🎯 Commit Convention
