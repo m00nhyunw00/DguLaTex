@@ -94,8 +94,13 @@ npm -v
 ```
 5. 프로젝트 폴더로 경로 이동하여 부트스트랩, monaco-editor 설치
 ```linux
-npm install bootstrap
-npm install @monaco-editor/react
+npm install
+// node.js 설치 필요
+// package.json 읽어서 필요한 패키지 일괄 설치
+
+// 아래 명령어 입력 필요 X
+// npm install bootstrap
+// npm install @monaco-editor/react
 ```
 
 **✨Run Project**
