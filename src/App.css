@@ -1,93 +1,30 @@
 /* ==========================================================================
-   1. 기본 초기화 (Reset)
-   브라우저마다 다른 기본 여백을 제거하고 화면을 가로세로 꽉 채웁니다.
+   1. GLOBAL RESET & BASE
    ========================================================================== */
 html, body, #root {
     margin: 0 !important;
     padding: 0 !important;
     width: 100% !important;
     height: 100% !important;
-    overflow: hidden; /* 전체 화면 스크롤 방지 */
+    overflow: hidden;
     background-color: #f8f9fa;
+    font-family: 'Pretendard', -apple-system, sans-serif;
 }
 
 /* ==========================================================================
-   2. 테마 변수 (Theme Variables)
-   동국대학교 상징색(#F37321)을 변수로 등록하여 유지보수를 쉽게 합니다.
+   2. DESIGN SYSTEM TOKENS (전역 변수)
    ========================================================================== */
 :root {
     --dgu-orange: #F37321;
     --dgu-orange-dark: #d65f1a;
+    --dgu-shadow: 0 0 20px rgba(0,0,0,0.4);
 }
 
-/* ==========================================================================
-   3. 레이아웃 구조 (Layout)
-   전체 화면을 상단바 / 사이드바 / 에디터 / 미리보기로 나눕니다.
-   ========================================================================== */
-.full-layout {
-    width: 100vw;
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-}
-
-/* 상단 내비게이션 바 */
-.top-nav {
-    height: 50px;
-    background-color: var(--dgu-orange) !important;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0 15px;
-}
-
-/* 왼쪽 파일 탐색기 사이드바 */
-.sidebar {
-    width: 240px;
-    min-width: 240px;
-    background-color: #f3f5f8;
-    border-right: 1px solid #ddd;
-}
-
-/* 중앙 편집 영역 */
-.editor-section {
-    flex: 1;
-    background-color: white;
-    border-right: 1px solid #ddd;
-    display: flex;
-    flex-direction: column;
-}
-
-/* 오른쪽 미리보기 영역 (어두운 배경) */
-.preview-section {
-    flex: 1;
-    background-color: #525659;
-    overflow-y: auto;
-    padding: 30px;
-}
-
-/* 종이(Paper) 캔버스 효과 */
-.paper-canvas {
-    background: white;
-    width: 100%;
-    max-width: 800px;
-    min-height: 1100px;
-    margin: 0 auto;
-    padding: 60px;
-    box-shadow: 0 0 20px rgba(0,0,0,0.4);
-}
-
-/* ==========================================================================
-   4. 컴포넌트 디자인 (UI Components)
-   버튼, 입력창, 텍스트 등 개별 요소의 스타일입니다.
-   ========================================================================== */
-
-/* 텍스트 주황색 강조 */
+/* 공통 활용 클래스 */
 .text-dgu {
     color: var(--dgu-orange) !important;
 }
 
-/* 주황색 테마 버튼 (로그인/컴파일 등) */
 .btn-dgu {
     background-color: var(--dgu-orange) !important;
     border-color: var(--dgu-orange) !important;
@@ -98,21 +35,3 @@ html, body, #root {
     .btn-dgu:hover {
         background-color: var(--dgu-orange-dark) !important;
     }
-
-/* 활성화된 파일 아이템 디자인 */
-.file-item-active {
-    background-color: white;
-    border: 1px solid var(--dgu-orange) !important;
-    color: var(--dgu-orange) !important;
-    font-weight: bold;
-}
-
-/* -----------------------------------------------------------
-   입력창 커스텀 (Focus 효과)
-   아이디/비밀번호 입력칸을 클릭했을 때 주황색 테마가 나타나게 합니다.
-   ----------------------------------------------------------- */
-.form-control:focus {
-    border-color: var(--dgu-orange) !important; /* 클릭 시 테두리색 */
-    box-shadow: 0 0 0 0.25rem rgba(243, 115, 33, 0.25) !important; /* 주황색 광채 효과 */
-    outline: 0;
-}
