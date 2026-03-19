@@ -43,7 +43,8 @@ function App() {
             setIsLoggedIn(true);
             setError(''); // 에러 상태 초기화
         } else {
-            setError('아이디 또는 비밀번호가 잘못되었습니다.');
+            setIsLoggedIn(false);
+            setError('아이디 또는 비밀번호가 잘못되었습니다.'); // 실패 시 문구 출력
         }
     };
 
