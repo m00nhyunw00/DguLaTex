@@ -110,9 +110,87 @@ npm run dev
 ## 🌴 Branch
 | 이름 | 설명 |
 | --- | --- |
-| main (default) | 항상 배포 가능한 안정적인 상태를 유지하는 브랜치  |
-| develop | 모든 기능 개발이 통합되는 브랜치로, 다음 배포를 준비하는 개발 기준 브랜치 |
-| feature/ | 개별 기능 개발을 위한 임시 브랜치로, develop 브랜치에서 생성 후 작업 완료 시 병합 |
+| main | 항상 배포 가능한 안정적인 상태를 유지하는 브랜치  |
+| develop (default) | 모든 기능 개발이 통합되는 브랜치로, 다음 배포를 준비하는 개발 기준 브랜치 |
+| feature/ | 개별 기능 개발을 위한 임시 브랜치로, develop 브랜치를 복사하여
+## 2. 프로젝트 전체 구조
+<img src = "">
+
+
+## 3. 프로젝트 디렉토리 구조
+<details>
+<summary>Frontend 구조 확인하기</summary>
+<div markdown="1">
+
+```
+
+```
+
+</div>
+</details>
+
+<details>
+<summary>Backend 구조 확인하기</summary>
+<div markdown="1">
+
+```
+
+```
+
+</div>
+</details>
+
+<details>
+
+</div>
+</details>
+
+## 4. 기능 소개
+
+```
+-
+```
+
+
+## ✏️ 사용법 
+**✨Git Clone**
+```git
+git clone https://github.com/m00nhyunw00/DguLaTex
+```
+
+**✨Before Run**
+1. Node.js 공식 사이트 접속: https://nodejs.org
+2. LTS(Long Term Support) 버전 다운로드 & 설치
+3. 설치 중 “PATH에 Node 추가” 옵션 체크 확인
+4. 설치 확인:
+```linux
+node -v
+npm -v
+```
+5. 프로젝트 폴더로 경로 이동하여 부트스트랩, monaco-editor 설치
+```linux
+npm install
+# node.js 설치 필요
+# package.json 읽어서 필요한 패키지 일괄 설치
+
+# 아래 명령어 입력 필요 X
+# npm install bootstrap
+# npm install @monaco-editor/react
+```
+
+**✨Run Project**
+```linux
+npm run dev
+# npm package 설치 필요
+```
+
+## 🌴 Branch
+| 이름 | 설명 |
+| --- | --- |
+| main | 항상 배포 가능한 안정적인 상태를 유지하는 브랜치 |
+| develop (default) | 모든 기능 개발이 통합되는 브랜치로, 다음 배포를 준비하는 개발 기준 브랜치로, 배포 버전 완성 시 main으로 병합 |
+| feature/ | 개별 기능 개발을 위한 임시 브랜치로, develop 브랜치로부터 분기하여 생성 후 작업 완료 시 develop으로 병합 |
+| docs | README 파일 등 단순 문서 작업을 위한 브랜치로, 작업 완료 시 develop으로 병합 |
 
 
 ## 🎯 Commit Convention
