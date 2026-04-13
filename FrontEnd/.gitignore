@@ -15,4 +15,4 @@ npm-debug.log*
 yarn-debug.log*
 
 # 💻 IDE (Optional but safe)
-.idea/
+# .idea/
