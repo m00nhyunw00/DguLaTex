@@ -27,11 +27,11 @@ DguLaTeX는 동국대학교 학생 전용 웹 기반 LaTeX 편집 및 협업 툴
 <img src="https://img.shields.io/badge/BS-7952B3?style=for-the-badge&logo=bootstrap&logoColor=white">
 
 **✨ Server** <br>
-<img src="https://img.shields.io/badge/node.js-339933?style=for-the-badge\&logo=nodedotjs\&logoColor=white">
-<img src="https://img.shields.io/badge/express-000000?style=for-the-badge\&logo=express\&logoColor=white">
+<img src="https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=nodedotjs&logoColor=white">
+<img src="https://img.shields.io/badge/Express-000000?style=for-the-badge&logo=express&logoColor=white">
 
 **✨ DB** <br>
-<img src="https://img.shields.io/badge/mysql-4479A1?style=for-the-badge\&logo=mysql\&logoColor=white">
+<img src="https://img.shields.io/badge/MySQL-4479A1?style=for-the-badge&logo=mysql&logoColor=white">
 
 -----
 
