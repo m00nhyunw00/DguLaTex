@@ -24,7 +24,7 @@ DguLaTeX는 동국대학교 학생 전용 웹 기반 LaTeX 편집 및 협업 툴
 **✨ Front-End** <br>
 <img src="https://img.shields.io/badge/React-61DAFB?style=for-the-badge\&logo=React\&logoColor=black">
 <img src="https://img.shields.io/badge/Vite-646CFF?style=for-the-badge\&logo=Vite\&logoColor=white">
-<img src="https://img.shields.io/badge/Bootstrap-7952B3?style=for-the-badge&logo=bootstrap&logoColor=white">
+<img src="https://img.shields.io/badge/Bootstrap-7952B3?style=for-the-badge&logo=bootstrap&logoColor=white&logoWidth=20">
 
 **✨ Server** <br>
 <img src="https://img.shields.io/badge/node.js-339933?style=for-the-badge\&logo=nodedotjs\&logoColor=white">
@@ -42,7 +42,7 @@ DguLaTeX는 동국대학교 학생 전용 웹 기반 LaTeX 편집 및 협업 툴
 
 | 폴더명 | 역할 | 설명 |
 | :--- | :---: | :--- |
-| **src/api/** | **Model** | API 통신 함수 (가짜 데이터/서버 요청) |
+| **src/api/** | **Model** | API 통신 함수 (데이터/서버 요청) |
 | **src/assets/** | - | 로고, 이미지, 아이콘(Favicon) 등 정적 자원 |
 | **src/components/** | **View** | 재사용 가능한 UI 부품 (버튼, 모달 등) |
 | **src/hooks/** | **Controller** | 비즈니스 로직 및 상태 관리 (Custom Hooks) |
