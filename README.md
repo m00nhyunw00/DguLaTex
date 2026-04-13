@@ -134,6 +134,3 @@ npm start
 ## 🎀 Meeting Minutes
 
 [Notion 회의록 확인하기](https://www.notion.so/655509cd9cbf82e7832e01447da3d796?source=copy_link)
-
-```
-```
