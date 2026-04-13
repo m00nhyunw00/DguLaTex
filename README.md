@@ -1,6 +1,5 @@
 # 👩🏻‍💻 DguLaTex 
-
-```text
+```
 DguLaTeX는 동국대학교 학생 전용 웹 기반 LaTeX 편집 및 협업 툴을 최종 목표로 하고 있습니다.
 사용자 친화적인 인터페이스와 실시간 협업 기능을 통해 학술 문서 작성을 지원합니다.
 ````
@@ -20,26 +19,26 @@ DguLaTeX는 동국대학교 학생 전용 웹 기반 LaTeX 편집 및 협업 툴
   * **강의명**: 2026-1 종합설계프로젝트1
   * **기간**: 2026.03.06 \~ 2026.06.19
 
-### 1\. 개발 환경 및 기술 스택
+### 1. 개발 환경 및 기술 스택
 
 **✨ Front-End** <br>
-\<img src="https://img.shields.io/badge/React-61DAFB?style=for-the-badge\&logo=React\&logoColor=black"\>
-\<img src="https://img.shields.io/badge/Vite-646CFF?style=for-the-badge\&logo=Vite\&logoColor=white"\>
-\<img src="https://www.google.com/search?q=https://img.shields.io/badge/Bootstrap-7952B3%3Fstyle%3Dfor-the-badge%26logo%3DBootstrap%26logoColor%3Dwhite"\>
+<img src="https://img.shields.io/badge/React-61DAFB?style=for-the-badge\&logo=React\&logoColor=black">
+<img src="https://img.shields.io/badge/Vite-646CFF?style=for-the-badge\&logo=Vite\&logoColor=white">
+<img src="https://www.google.com/search?q=https://img.shields.io/badge/Bootstrap-7952B3%3Fstyle%3Dfor-the-badge%26logo%3DBootstrap%26logoColor%3Dwhite">
 
 **✨ Server** <br>
-\<img src="https://img.shields.io/badge/node.js-339933?style=for-the-badge\&logo=nodedotjs\&logoColor=white"\>
-\<img src="https://img.shields.io/badge/express-000000?style=for-the-badge\&logo=express\&logoColor=white"\>
+<img src="https://img.shields.io/badge/node.js-339933?style=for-the-badge\&logo=nodedotjs\&logoColor=white">
+<img src="https://img.shields.io/badge/express-000000?style=for-the-badge\&logo=express\&logoColor=white">
 
 **✨ DB** <br>
-\<img src="https://img.shields.io/badge/mysql-4479A1?style=for-the-badge\&logo=mysql\&logoColor=white"\>
+<img src="https://img.shields.io/badge/mysql-4479A1?style=for-the-badge\&logo=mysql\&logoColor=white">
 
 -----
 
-### 2\. 프로젝트 디렉토리 구조 (MVC)
+### 2. 프로젝트 디렉토리 구조 (MVC)
 
-\<details\>
-\<summary\>📂 Frontend 구조 (React + Vite)\</summary\>
+<details>
+<summary>📂 Frontend 구조 (React + Vite)</summary>
 
 | 폴더명 | 역할 | 설명 |
 | :--- | :---: | :--- |
@@ -49,10 +48,9 @@ DguLaTeX는 동국대학교 학생 전용 웹 기반 LaTeX 편집 및 협업 툴
 | **src/hooks/** | **Controller** | 비즈니스 로직 및 상태 관리 (Custom Hooks) |
 | **src/pages/** | **View** | 독립적인 페이지 화면 단위 |
 
-\</details\>
+</details>
 
-\<details\>
-\<summary\>📂 Backend 구조 (Node.js Express)\</summary\>
+<summary>📂 Backend 구조 (Node.js Express)</summary>
 
 | 폴더명 | 역할 | 설명 |
 | :--- | :---: | :--- |
@@ -61,20 +59,20 @@ DguLaTeX는 동국대학교 학생 전용 웹 기반 LaTeX 편집 및 협업 툴
 | **src/controllers/** | **Controller** | 실제 데이터 처리 로직 및 응답 반환 |
 | **src/app.js** | - | 서버 시작점 및 미들웨어 설정 |
 
-\</details\>
+</details>
 
 -----
 
 ## ✏️ 사용법
 
-### 1\. Git Clone
+### 1. Git Clone
 
 ```bash
 git clone [https://github.com/m00nhyunw00/DguLaTex](https://github.com/m00nhyunw00/DguLaTex)
 cd DguLaTex
 ```
 
-### 2\. 환경 설정 (최초 1회)
+### 2. 환경 설정 (최초 1회)
 
 반드시 각 폴더(`FrontEnd`, `BackEnd`)로 이동하여 패키지를 설치해야 합니다.
 
@@ -92,7 +90,7 @@ cd BackEnd
 npm install
 ```
 
-### 3\. 프로젝트 실행
+### 3. 프로젝트 실행
 
 **✨ Front-End**
 
