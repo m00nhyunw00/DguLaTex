@@ -1,135 +1,140 @@
-﻿<img src = "">
-
 # 👩🏻‍💻 DguLaTex 
-```
-DguLatex는 동국대학교 학생 전용 웹 기반 LaTex 편집 협업툴을 최종 목표로 하고 있습니다.
-기본적인 LaTex 협업 기능 외에도 차별화된 기능을 추가할 예정입니다.  
-```
+
+```text
+DguLaTeX는 동국대학교 학생 전용 웹 기반 LaTeX 편집 및 협업 툴을 최종 목표로 하고 있습니다.
+사용자 친화적인 인터페이스와 실시간 협업 기능을 통해 학술 문서 작성을 지원합니다.
+````
 
 ## 🙆🏻‍♀️ Team
+
 ✨ **2026-1-종설1-8조** ✨
-| 팀 | 이름 | 전공 | 역할  | 깃허브 아이디 |
-|----| ----- | ----- | -------- | ------- |
-| 팀장 | 문현우 | 컴퓨터·AI학부 | 프론트엔드  | m00nhyunw00 |
-| 팀원 | 정서영 | 컴퓨터·AI학부 | DB 설계 | standupnow  |
-| 팀원 | 오재원 | 멀티미디어공학과 | 백엔드 | K1N01  |
+
+| 구분 | 이름 | 전공 | 역할 | 깃허브 아이디 |
+| :--- | :--- | :--- | :--- | :--- |
+| **팀장** | 문현우 | 컴퓨터·AI학부 | 프론트엔드 | m00nhyunw00 |
+| **팀원** | 정서영 | 컴퓨터·AI학부 | DB 설계 | standupnow |
+| **팀원** | 오재원 | 멀티미디어공학과 | 백엔드 | K1N01 |
 
 ## 🍎 프로젝트 소개
-```
-2026-1 종합설계프로젝트1 강의에서 진행한 프로젝트입니다.
-2026.03.06 ~ 2026.06.19
-```
 
-### 1. 개발 환경 및 기술 스택
-**✨Front** <br>
-<img src="https://img.shields.io/badge/React-61DAFB?style=for-the-badge&logo=React&logoColor=black">
-<img src="https://img.shields.io/badge/Css-1572B6?style=for-the-badge&logo=Css&logoColor=white">
+  * **강의명**: 2026-1 종합설계프로젝트1
+  * **기간**: 2026.03.06 \~ 2026.06.19
 
+### 1\. 개발 환경 및 기술 스택
 
-**✨Server** <br>
-<img src="https://img.shields.io/badge/node.js-339933?style=for-the-badge&logo=nodedotjs&logoColor=white">
-<img src="https://img.shields.io/badge/express-000000?style=for-the-badge&logo=express&logoColor=white">
+**✨ Front-End** <br>
+\<img src="https://img.shields.io/badge/React-61DAFB?style=for-the-badge\&logo=React\&logoColor=black"\>
+\<img src="https://img.shields.io/badge/Vite-646CFF?style=for-the-badge\&logo=Vite\&logoColor=white"\>
+\<img src="https://www.google.com/search?q=https://img.shields.io/badge/Bootstrap-7952B3%3Fstyle%3Dfor-the-badge%26logo%3DBootstrap%26logoColor%3Dwhite"\>
 
+**✨ Server** <br>
+\<img src="https://img.shields.io/badge/node.js-339933?style=for-the-badge\&logo=nodedotjs\&logoColor=white"\>
+\<img src="https://img.shields.io/badge/express-000000?style=for-the-badge\&logo=express\&logoColor=white"\>
 
-**✨DB** <br>
-<img src="https://img.shields.io/badge/mysql-4479A1?style=for-the-badge&logo=mysql&logoColor=white">
+**✨ DB** <br>
+\<img src="https://img.shields.io/badge/mysql-4479A1?style=for-the-badge\&logo=mysql\&logoColor=white"\>
 
+-----
 
+### 2\. 프로젝트 디렉토리 구조 (MVC)
 
-### 2. 프로젝트 전체 구조
-<img src = "">
+\<details\>
+\<summary\>📂 Frontend 구조 (React + Vite)\</summary\>
 
+| 폴더명 | 역할 | 설명 |
+| :--- | :---: | :--- |
+| **src/api/** | **Model** | API 통신 함수 (가짜 데이터/서버 요청) |
+| **src/assets/** | - | 로고, 이미지, 아이콘(Favicon) 등 정적 자원 |
+| **src/components/** | **View** | 재사용 가능한 UI 부품 (버튼, 모달 등) |
+| **src/hooks/** | **Controller** | 비즈니스 로직 및 상태 관리 (Custom Hooks) |
+| **src/pages/** | **View** | 독립적인 페이지 화면 단위 |
 
-### 3. 프로젝트 디렉토리 구조
-<details>
-<summary>Frontend 구조 확인하기</summary>
-<div markdown="1">
+\</details\>
 
-```
+\<details\>
+\<summary\>📂 Backend 구조 (Node.js Express)\</summary\>
 
-```
+| 폴더명 | 역할 | 설명 |
+| :--- | :---: | :--- |
+| **src/models/** | **Model** | DB 스키마 및 테이블 정의 |
+| **src/routes/** | **Route** | API 엔드포인트 정의 및 경로 매핑 |
+| **src/controllers/** | **Controller** | 실제 데이터 처리 로직 및 응답 반환 |
+| **src/app.js** | - | 서버 시작점 및 미들웨어 설정 |
 
-</div>
-</details>
+\</details\>
 
-<details>
-<summary>Backend 구조 확인하기</summary>
-<div markdown="1">
+-----
 
-```
+## ✏️ 사용법
 
-```
+### 1\. Git Clone
 
-</div>
-</details>
-
-<details>
-
-</div>
-</details>
-
-### 4. 기능 소개
-
-```
--
-```
-
-
-## ✏️ 사용법 
-**✨Git Clone**
-```git
-git clone https://github.com/m00nhyunw00/DguLaTex
+```bash
+git clone [https://github.com/m00nhyunw00/DguLaTex](https://github.com/m00nhyunw00/DguLaTex)
+cd DguLaTex
 ```
 
-**✨Before Run**
-1. Node.js 공식 사이트 접속: https://nodejs.org
-2. LTS(Long Term Support) 버전 다운로드 & 설치
-3. 설치 중 “PATH에 Node 추가” 옵션 체크 확인
-4. 설치 확인:
-```linux
-node -v
-npm -v
-```
-5. 프로젝트 폴더로 경로 이동하여 부트스트랩, monaco-editor 설치
-```linux
+### 2\. 환경 설정 (최초 1회)
+
+반드시 각 폴더(`FrontEnd`, `BackEnd`)로 이동하여 패키지를 설치해야 합니다.
+
+**✨ Front-End**
+
+```bash
+cd FrontEnd
 npm install
-# node.js 설치 필요
-# package.json 읽어서 필요한 패키지 일괄 설치
-
-# 아래 명령어 입력 필요 X
-# npm install bootstrap
-# npm install @monaco-editor/react
 ```
 
-**✨Run Project**
-```linux
+**✨ Back-End**
+
+```bash
+cd BackEnd
+npm install
+```
+
+### 3\. 프로젝트 실행
+
+**✨ Front-End**
+
+```bash
+cd FrontEnd
 npm run dev
-# npm package 설치 필요
+# 접속 주소: http://localhost:5173
 ```
 
-## 🌴 Branch
-| 이름 | 설명 |
-| --- | --- |
-| main | 항상 배포 가능한 안정적인 상태를 유지하는 브랜치 |
-| develop <br> (default) | 모든 기능 개발이 통합되는 브랜치로, <br>다음 배포를 준비하는 개발 기준 브랜치이며 배포 버전 완성 시 main으로 병합 |
-| feature/ | 개별 기능 개발을 위한 임시 브랜치로, <br> develop 브랜치로부터 분기하여 생성 후 작업 완료 시 develop으로 병합 |
-| docs | README 파일 등 단순 문서 작업을 위한 브랜치로, <br> 작업 완료 시 develop으로 병합 |
+**✨ Back-End**
 
+```bash
+cd BackEnd
+# 서버 시작 (스크립트에 따라 npm start 또는 npm run dev)
+npm run dev
+```
 
-## 🎯 Commit Convention
-| 제목 | 설명 |
-| --- | --- |
-| feat: | 새로운 기능 추가 |
-| fix: | 버그 수정 |
-| docs: | 문서 수정 |
-| update: | 기타 업데이트 |
-| style: | 코드 포맷 변경, 세미콜론 누락, 코드 변경 없음 |
-| refactor: | 프로덕션 코드 리팩터링 |
-| comment: | 주석 생성, 수정 및 삭제 |
-| test: | 테스트 추가, 테스트 코드 리팩터링, 프로덕션 코드 변경 없음 |
-| chore: | 빌드 테스크 업데이트, 패키지 매니저 환경설정, 프로덕션 코드 변경 없음 |
+-----
 
-## 🎀 Meeting Miutes
-[회의록 확인](https://www.notion.so/655509cd9cbf82e7832e01447da3d796?source=copy_link)
+## 🌴 Branch & Commit Convention
 
+### 🌿 Branch Strategy
 
+  * **main**: 배포용 안정 브랜치
+  * **develop**: 개발 통합 브랜치 (Default)
+  * **feature/**: 개별 기능 개발용 (ex: `feature/login`)
+  * **docs**: README 등 문서 작업용
+
+### 🎯 Commit Message Format
+
+  * `feat:` 새로운 기능 추가
+  * `fix:` 버그 수정
+  * `docs:` 문서 수정
+  * `style:` 코드 포맷 변경 (로직 변경 없음)
+  * `refactor:` 코드 리팩토링
+  * `chore:` 빌드 업무, 패키지 설정 수정 등
+
+-----
+
+## 🎀 Meeting Minutes
+
+[Notion 회의록 확인하기](https://www.notion.so/655509cd9cbf82e7832e01447da3d796?source=copy_link)
+
+```
+```
