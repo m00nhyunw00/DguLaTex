@@ -22,9 +22,9 @@ DguLaTeX는 동국대학교 학생 전용 웹 기반 LaTeX 편집 및 협업 툴
 ### 개발 환경 및 기술 스택
 
 **✨ Front-End** <br>
-<img src="https://img.shields.io/badge/React-61DAFB?style=for-the-badge\&logo=React\&logoColor=black">
-<img src="https://img.shields.io/badge/Vite-646CFF?style=for-the-badge\&logo=Vite\&logoColor=white">
-<img src="https://img.shields.io/badge/Bootstrap-7952B3?style=for-the-badge&logo=bootstrap&logoColor=white&logoWidth=20">
+<img src="https://img.shields.io/badge/React-61DAFB?style=for-the-badge&logo=react&logoColor=black">
+<img src="https://img.shields.io/badge/Vite-646CFF?style=for-the-badge&logo=vite&logoColor=white">
+<img src="https://img.shields.io/badge/BS-7952B3?style=for-the-badge&logo=bootstrap&logoColor=white">
 
 **✨ Server** <br>
 <img src="https://img.shields.io/badge/node.js-339933?style=for-the-badge\&logo=nodedotjs\&logoColor=white">
