@@ -106,7 +106,7 @@ npm run dev
 ```bash
 cd BackEnd
 # 서버 시작 (스크립트에 따라 npm start 또는 npm run dev)
-npm run dev
+npm start
 ```
 
 -----
