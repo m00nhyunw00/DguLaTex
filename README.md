@@ -106,7 +106,7 @@ npm run dev
 ```bash
 cd BackEnd
 # 서버 시작 (스크립트에 따라 npm start 또는 npm run dev)
-npm run dev
+npm start
 ```
 
 -----
@@ -134,6 +134,3 @@ npm run dev
 ## 🎀 Meeting Minutes
 
 [Notion 회의록 확인하기](https://www.notion.so/655509cd9cbf82e7832e01447da3d796?source=copy_link)
-
-```
-```
