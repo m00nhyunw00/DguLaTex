@@ -4,8 +4,8 @@
 html, body, #root {
     margin: 0 !important;
     padding: 0 !important;
-    width: 100% !important;
-    height: 100% !important;
+    width: 100vw !important;
+    height: 100vh !important;
     overflow: hidden;
     background-color: #f8f9fa;
     font-family: 'Pretendard', -apple-system, sans-serif;
@@ -20,7 +20,6 @@ html, body, #root {
     --dgu-shadow: 0 0 20px rgba(0,0,0,0.4);
 }
 
-/* 공통 활용 클래스 */
 .text-dgu {
     color: var(--dgu-orange) !important;
 }
@@ -30,8 +29,10 @@ html, body, #root {
     border-color: var(--dgu-orange) !important;
     color: white !important;
     font-weight: bold;
+    transition: 0.2s;
 }
 
-    .btn-dgu:hover {
-        background-color: var(--dgu-orange-dark) !important;
-    }
+.btn-dgu:hover {
+    background-color: var(--dgu-orange-dark) !important;
+    transform: translateY(-1px);
+}

@@ -1,15 +1,33 @@
 /**
  * [Model] 인증 관련 API 통신 모듈
- * 현재는 백엔드 없이 테스트를 위해 가짜 응답(Mock)을 반환합니다.
+ * .env에 설정된 백엔드 주소를 사용합니다.
  */
-export const loginRequest = async (email, password) => {
-    // 실제 서버 통신 느낌을 주기 위한 지연 시간 (0.5초)
-    await new Promise((resolve) => setTimeout(resolve, 500));
+// Vite 환경 변수 불러오기
+const API_BASE_URL = import.meta.env.VITE_API_URL;
 
-    // 정적 계정 검증 로직 (나중에 fetch/axios로 교체)
-    if (email === 'dgu' && password === '1234') {
-        return { success: true, message: "로그인 성공" };
-    } else {
-        throw new Error("아이디 또는 비밀번호가 잘못되었습니다.");
+export const loginRequest = async (email, password) => {
+    try {
+        // 주소 부분을 템플릿 리터럴로 변경
+        const response = await fetch(`${API_BASE_URL}/api/auth/login`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                studentId: email,
+                password: password,
+            }),
+        });
+
+        const data = await response.json();
+
+        if (response.ok && data.success) {
+            return data;
+        } else {
+            throw new Error(data.message || "로그인에 실패했습니다.");
+        }
+    } catch (error) {
+        console.error("API 통신 에러:", error);
+        throw new Error(error.message || "서버와 통신할 수 없습니다.");
     }
 };

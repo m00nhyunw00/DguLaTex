@@ -1,0 +1,47 @@
+/* LoginUI.css */
+.login-card-glass {
+    width: 100%;
+    max-width: 420px;
+    padding: 3.5rem 2.5rem;
+
+    /* [핵심] 반투명 및 블러 효과 */
+    background: rgba(255, 255, 255, 0.82);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.dgu-logo {
+    color: #f15a24; /* 동국 주황 */
+    font-weight: 800;
+    font-size: 2.6rem;
+    letter-spacing: -1.5px;
+}
+
+.dgu-input {
+    border-radius: 10px !important;
+}
+
+.dgu-input:focus {
+    border-color: #f15a24 !important;
+    box-shadow: 0 0 0 0.25rem rgba(241, 90, 36, 0.15) !important;
+}
+
+.btn-dgu-primary {
+    background-color: #f15a24 !important;
+    color: white !important;
+    border: none !important;
+    border-radius: 10px !important;
+    transition: all 0.2s ease;
+}
+
+.btn-dgu-primary:hover {
+    background-color: #d44e1e !important;
+    transform: translateY(-2px);
+}
+
+.btn-dgu-primary:active {
+    transform: translateY(0);
+}

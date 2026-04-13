@@ -1,15 +1,21 @@
 import React from 'react';
 import LoginUI from '../components/Login/LoginUI';
 import { useLogin } from '../hooks/useLogin';
+import './LoginPage.css'; // [신규] 배경 전용 CSS 임포트
 
-/**
- * [View] 로그인 페이지 메인 컴포넌트
- */
-function LoginPage({ setIsLoggedIn }) {
-    // 전역 상태 변경 함수를 전달하여 로직 처리
-    const loginProps = useLogin(setIsLoggedIn);
+function LoginPage({ setIsLoggedIn, setUser }) {
+    const loginLogic = useLogin(setIsLoggedIn, setUser);
 
-    return <LoginUI {...loginProps} />;
+    return (
+        <div className="login-page-wrapper">
+            {/* 이미지 가독성을 위한 오버레이 레이어 */}
+            <div className="login-page-overlay">
+                <LoginUI
+                    {...loginLogic}
+                />
+            </div>
+        </div>
+    );
 }
 
 export default LoginPage;

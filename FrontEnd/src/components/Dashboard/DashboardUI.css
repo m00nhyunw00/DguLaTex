@@ -1,0 +1,89 @@
+/* DashboardUI.css */
+.project-dashboard {
+    font-family: 'Pretendard', sans-serif;
+    background-color: #f8f9fa;
+    height: 100vh;
+}
+
+/* 래퍼: 사이드바와 메인을 가로로 배치 */
+.dashboard-wrapper {
+    display: flex;
+    height: calc(100vh - var(--nav-height));
+    overflow: hidden;
+}
+
+/* 좌측 사이드바 */
+.dashboard-sidebar {
+    width: 250px;
+    background-color: #fff;
+    border-right: 1px solid #dee2e6;
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.btn-create-project {
+    background-color: #28a745; /* 오버리프 스타일 초록색 */
+    color: white;
+    font-weight: bold;
+    border: none;
+    padding: 0.6rem;
+    border-radius: 4px;
+    margin-bottom: 1.5rem;
+}
+
+.sidebar-menu {
+    list-style: none;
+    padding: 0;
+}
+
+.sidebar-menu li {
+    padding: 0.6rem 1rem;
+    cursor: pointer;
+    border-radius: 4px;
+    font-size: 0.9rem;
+    color: #495057;
+}
+
+.sidebar-menu li:hover {
+    background-color: #f1f3f5;
+}
+
+.sidebar-menu li.active {
+    background-color: #e9ecef;
+    color: var(--dgu-orange);
+    font-weight: bold;
+}
+
+/* 우측 메인 리스트 영역 */
+.dashboard-main {
+    flex: 1;
+    padding: 2.5rem;
+    overflow-y: auto;
+    background-color: #fff;
+}
+
+/* 상단 액션바 */
+.batch-actions {
+    display: flex;
+    align-items: center;
+}
+
+/* 테이블 내 체크박스 및 버튼 */
+.form-check-input:checked {
+    background-color: var(--dgu-orange);
+    border-color: var(--dgu-orange);
+}
+
+.table-active {
+    background-color: rgba(241, 90, 36, 0.05) !important;
+}
+
+.table .btn-link {
+    font-size: 0.85rem;
+    text-decoration: none !important;
+}
+
+.table .btn-link:hover {
+    color: var(--dgu-orange) !important;
+}
