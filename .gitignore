@@ -1,0 +1,19 @@
+# 📦 Dependencies
+node_modules/
+
+# 💻 Editor / IDE Settings
+.idea/
+*.iml
+*.iws
+*.ipr
+out/
+gen/
+
+# 🖥️ OS Generated Files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# 🧩 Misc
+*.sln
+*.sw?

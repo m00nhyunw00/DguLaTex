@@ -1,0 +1,56 @@
+/* [Layout] 메인 프레임 */
+.full-layout {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.top-nav {
+    height: 50px;
+    background-color: var(--dgu-orange) !important;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 15px;
+}
+
+.sidebar {
+    width: 240px;
+    min-width: 240px;
+    background-color: #f3f5f8;
+    border-right: 1px solid #ddd;
+}
+
+.editor-section {
+    flex: 1;
+    background-color: white;
+    border-right: 1px solid #ddd;
+    display: flex;
+    flex-direction: column;
+}
+
+.preview-section {
+    flex: 1;
+    background-color: #525659;
+    overflow-y: auto;
+    padding: 30px;
+}
+
+/* [Component] 프리뷰 종이 및 파일 아이템 */
+.paper-canvas {
+    background: white;
+    width: 100%;
+    max-width: 800px;
+    min-height: 1100px;
+    margin: 0 auto;
+    padding: 60px;
+    box-shadow: var(--dgu-shadow);
+}
+
+.file-item-active {
+    background-color: white;
+    border: 1px solid var(--dgu-orange) !important;
+    color: var(--dgu-orange) !important;
+    font-weight: bold;
+}

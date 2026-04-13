@@ -1,0 +1,11 @@
+/* [Login] 입력 필드 포커스 효과 */
+.form-control:focus {
+    border-color: var(--dgu-orange) !important;
+    box-shadow: 0 0 0 0.25rem rgba(243, 115, 33, 0.25) !important;
+    outline: 0;
+}
+
+/* 로그인 카드 관련 추가 스타일이 필요하면 여기에 작성 */
+.card {
+    border-radius: 12px;
+}
