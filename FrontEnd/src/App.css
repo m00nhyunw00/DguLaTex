@@ -1,38 +1,63 @@
-/* ==========================================================================
-   1. GLOBAL RESET & BASE
-   ========================================================================== */
+/**
+ * =================================================================
+ * [Global] Core Reset & Design System
+ * 설명: 어플리케이션 전체의 레이아웃 초기화 및 공통 디자인 토큰을 정의함.
+ * 주요 기능: 브라우저 기본 여백 제거, 전역 변수 설정 및 공통 UI 컴포넌트(버전) 스타일.
+ * =================================================================
+ */
+
+/* ---------------------------------------------------------
+ * SECTION 1: Global Reset & Viewport Base
+ * 기능: 브라우저 간 일관된 렌더링을 위해 기본 여백을 강제 초기화하고
+ * 어플리케이션이 뷰포트 전체를 점유하도록 설정함.
+ * --------------------------------------------------------- */
 html, body, #root {
     margin: 0 !important;
     padding: 0 !important;
-    width: 100vw !important;
-    height: 100vh !important;
+    width: 100vw !important; /* 브라우저 가로 너비 100% 점유 */
+    height: 100vh !important; /* 브라우저 세로 높이 100% 점유 */
+
+    /* 어플리케이션 내부(Dashboard, Editor 등)에서 개별 스크롤을 관리하므로
+       최상위 바디의 스크롤은 차단하여 레이아웃 무너짐을 방지함 */
     overflow: hidden;
+
     background-color: #f8f9fa;
-    font-family: 'Pretendard', -apple-system, sans-serif;
+    font-family: 'Pretendard', -apple-system, sans-serif; /* 한글 가독성에 최적화된 Pretendard 우선 적용 */
 }
 
-/* ==========================================================================
-   2. DESIGN SYSTEM TOKENS (전역 변수)
-   ========================================================================== */
+/* ---------------------------------------------------------
+ * SECTION 2: Design System Tokens (Global Variables)
+ * 기능: 동국대학교 브랜드 가이드를 준수하는 전역 컬러 및 시각 효과 정의.
+ * --------------------------------------------------------- */
 :root {
-    --dgu-orange: #F37321;
-    --dgu-orange-dark: #d65f1a;
-    --dgu-shadow: 0 0 20px rgba(0,0,0,0.4);
+    --dgu-orange: #F37321;      /* 동국대학교 공식 상징색 (Primary) */
+    --dgu-orange-dark: #d65f1a; /* 버튼 호버 등 인터랙션을 위한 다크 톤 */
+    --dgu-shadow: 0 0 20px rgba(0,0,0,0.4); /* 모달이나 카드에 사용되는 깊이감 있는 그림자 */
 }
 
+/* ---------------------------------------------------------
+ * SECTION 3: Utility Classes & Shared Components
+ * 기능: 프로젝트 전반에 걸쳐 공통적으로 재사용되는 유틸리티 클래스.
+ * --------------------------------------------------------- */
+
+/* 텍스트 하이라이트: 브랜드 주황색 적용 */
 .text-dgu {
     color: var(--dgu-orange) !important;
 }
 
+/* 브랜드 프라이머리 버튼 (DGU Button)
+ * 기능: 강조가 필요한 주요 액션(로그인, 생성 등)에 사용됨.
+ */
 .btn-dgu {
     background-color: var(--dgu-orange) !important;
     border-color: var(--dgu-orange) !important;
     color: white !important;
     font-weight: bold;
-    transition: 0.2s;
+    transition: 0.2s ease-in-out; /* 상태 변화 시 부드러운 전환 효과 */
 }
 
+/* 버튼 인터랙션: 호버 시 색상을 어둡게 하고 미세하게 띄우는 피드백 제공 */
 .btn-dgu:hover {
     background-color: var(--dgu-orange-dark) !important;
-    transform: translateY(-1px);
+    transform: translateY(-1px); /* 물리적 버튼 클릭감을 위한 부유 효과 */
 }

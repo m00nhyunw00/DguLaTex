@@ -1,6 +1,14 @@
+/**
+ * =================================================================
+ * [Component] Dashboard UI View
+ * 설명: 프로젝트 목록을 관리하고 인터랙션을 처리하는 메인 대시보드 뷰.
+ * 수정 사항: 인라인 스타일 제거 및 섹션별 CSS 클래스 기반 관리 체계 구축.
+ * =================================================================
+ */
+
 import React, { useState } from 'react';
 import './DashboardUI.css';
-import '../Bar.css';
+import '../Common.css';
 
 function DashboardUI({
                          userName,
@@ -10,21 +18,21 @@ function DashboardUI({
                          setActiveMenu,
                          handleCreateProject,
                          handleDoubleClick,
-                         handleDeleteProject // 이제 (ids) => ... 형태의 함수를 받음
+                         handleDeleteProject
                      }) {
+    /* ---------------------------------------------------------
+     * SECTION 1: Local State Management
+     * --------------------------------------------------------- */
     const [selectedIds, setSelectedIds] = useState([]);
-
-    // 모달 관련 상태
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [targetId, setTargetId] = useState(null);
 
-    // 체크박스 로직
+    /* ---------------------------------------------------------
+     * SECTION 2: Selection & Modal Logic
+     * --------------------------------------------------------- */
     const toggleAll = () => {
-        if (selectedIds.length === projects.length && projects.length > 0) {
-            setSelectedIds([]);
-        } else {
-            setSelectedIds(projects.map(p => p.id));
-        }
+        if (selectedIds.length === projects.length && projects.length > 0) setSelectedIds([]);
+        else setSelectedIds(projects.map(p => p.id));
     };
 
     const toggleSelect = (id) => {
@@ -33,8 +41,6 @@ function DashboardUI({
         );
     };
 
-    // --- 삭제 프로세스 ---
-
     const openDeleteModal = (id = null) => {
         setTargetId(id);
         setIsModalOpen(true);
@@ -42,11 +48,9 @@ function DashboardUI({
 
     const confirmDelete = () => {
         if (targetId) {
-            // [수정] 단일 ID를 넘김
             handleDeleteProject(targetId);
             setSelectedIds(prev => prev.filter(id => id !== targetId));
         } else {
-            // [수정] 선택된 ID 배열 전체를 한 번에 넘김 (성능 최적화)
             handleDeleteProject(selectedIds);
             setSelectedIds([]);
         }
@@ -59,7 +63,8 @@ function DashboardUI({
     };
 
     return (
-        <div className="d-flex flex-column w-100 h-100 project-dashboard">
+        <div className="project-dashboard">
+            {/* 파트 1: 상단 네비게이션 바 (공통 클래스 사용) */}
             <nav className="navbar navbar-dark top-nav-fixed shadow-sm">
                 <span className="navbar-brand fw-bold text-dgu m-0">DguLaTeX</span>
                 <div className="d-flex align-items-center ms-auto">
@@ -71,6 +76,7 @@ function DashboardUI({
             </nav>
 
             <div className="dashboard-wrapper">
+                {/* 파트 2: 좌측 사이드바 (프로젝트 범위 선택 영역) */}
                 <aside className="dashboard-sidebar">
                     <button className="btn-create-project w-100" onClick={handleCreateProject}>+ 신규 프로젝트</button>
                     <ul className="sidebar-menu">
@@ -80,23 +86,20 @@ function DashboardUI({
                     </ul>
                 </aside>
 
+                {/* 파트 3: 우측 메인 리스트 (프로젝트 목록 영역) */}
                 <main className="dashboard-main">
                     <div className="d-flex justify-content-between align-items-center mb-4">
-                        <div className="d-flex align-items-center">
-                            <h4 className="fw-bold m-0 me-3">
-                                {activeMenu === 'all' ? '전체 프로젝트' : activeMenu === 'mine' ? '나의 프로젝트' : '공유받은 프로젝트'}
-                            </h4>
-                            {selectedIds.length > 0 && (
-                                <div className="batch-actions">
-                                    <button className="btn btn-sm btn-outline-secondary me-2">프로젝트 다운로드</button>
-                                    <button className="btn btn-sm btn-outline-secondary me-2">PDF 다운로드</button>
-                                    <button className="btn btn-sm btn-outline-danger" onClick={() => openDeleteModal()}>삭제</button>
-                                </div>
-                            )}
-                        </div>
+                        <h4 className="fw-bold m-0">
+                            {activeMenu === 'all' ? '전체 프로젝트' : activeMenu === 'mine' ? '나의 프로젝트' : '공유받은 프로젝트'}
+                        </h4>
+                        {selectedIds.length > 0 && (
+                            <div className="batch-actions">
+                                <button className="btn btn-sm btn-outline-danger" onClick={() => openDeleteModal()}>일괄 삭제</button>
+                            </div>
+                        )}
                     </div>
 
-                    <div className="card border-0 shadow-sm overflow-hidden">
+                    <div className="table-container shadow-sm border-0">
                         <table className="table table-hover mb-0">
                             <thead className="table-light">
                             <tr>
@@ -111,7 +114,12 @@ function DashboardUI({
                             </thead>
                             <tbody>
                             {projects.map((proj) => (
-                                <tr key={proj.id} onDoubleClick={() => handleDoubleClick(proj)} className={selectedIds.includes(proj.id) ? 'table-active' : ''} style={{ cursor: 'pointer' }}>
+                                <tr
+                                    key={proj.id}
+                                    onDoubleClick={() => handleDoubleClick(proj)}
+                                    className={selectedIds.includes(proj.id) ? 'table-row-selected' : ''}
+                                    style={{ cursor: 'pointer' }}
+                                >
                                     <td className="ps-4 py-3" onClick={(e) => e.stopPropagation()}>
                                         <input type="checkbox" className="form-check-input" checked={selectedIds.includes(proj.id)} onChange={() => toggleSelect(proj.id)} />
                                     </td>
@@ -119,9 +127,7 @@ function DashboardUI({
                                     <td className="py-3 small text-muted">{proj.owner === 'me' ? 'You' : proj.owner}</td>
                                     <td className="py-3 small text-muted">{proj.updated}</td>
                                     <td className="text-center py-3" onClick={(e) => e.stopPropagation()}>
-                                        <button className="btn btn-link btn-sm text-secondary text-decoration-none me-2">프로젝트 다운로드</button>
-                                        <button className="btn btn-link btn-sm text-secondary text-decoration-none me-2">PDF 다운로드</button>
-                                        <button className="btn btn-link btn-sm text-danger text-decoration-none" onClick={() => openDeleteModal(proj.id)}>삭제</button>
+                                        <button className="btn btn-link btn-table-action btn-sm text-danger" onClick={() => openDeleteModal(proj.id)}>삭제</button>
                                     </td>
                                 </tr>
                             ))}
@@ -131,22 +137,15 @@ function DashboardUI({
                 </main>
             </div>
 
-            {/* 삭제 확인 모달 */}
+            {/* 파트 4: 모달 오버레이 (삭제 컨펌) */}
             {isModalOpen && (
                 <div className="custom-modal-overlay">
-                    <div className="custom-modal-content card shadow-lg animate__animated animate__zoomIn">
-                        <div className="card-body p-4 text-center">
-                            <h5 className="fw-bold mb-3">프로젝트 삭제</h5>
-                            <p className="text-muted mb-4">
-                                {targetId
-                                    ? "이 프로젝트를 정말로 삭제하시겠습니까?"
-                                    : `선택한 ${selectedIds.length}개의 프로젝트를 정말로 삭제하시겠습니까?`}
-                                <br />삭제된 데이터는 복구할 수 없습니다.
-                            </p>
-                            <div className="d-flex justify-content-center gap-2">
-                                <button className="btn btn-light px-4" onClick={closeModal}>취소</button>
-                                <button className="btn btn-danger px-4" onClick={confirmDelete}>삭제</button>
-                            </div>
+                    <div className="modal-content-box shadow-lg">
+                        <h5 className="fw-bold mb-3">프로젝트 삭제</h5>
+                        <p className="text-muted mb-4">정말로 삭제하시겠습니까?<br />삭제된 데이터는 복구할 수 없습니다.</p>
+                        <div className="d-flex justify-content-center gap-2">
+                            <button className="btn btn-light px-4" onClick={closeModal}>취소</button>
+                            <button className="btn btn-danger px-4" onClick={confirmDelete}>삭제</button>
                         </div>
                     </div>
                 </div>

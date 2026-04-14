@@ -1,21 +1,43 @@
-/* LoginPage.css */
+/**
+ * =================================================================
+ * [Style] Login Page Layout
+ * 설명: 로그인 화면의 전체 배경 및 레이아웃을 정의하는 스타일
+ * 주요 특징: 학교 캠퍼스 이미지를 전신 배경으로 사용하며, 콘텐츠 집중도를 위해
+ * 어두운 오버레이(Overlay) 레이어를 중첩
+ * =================================================================
+ */
+
+/* ---------------------------------------------------------
+ * SECTION 1: Full-Screen Background Wrapper
+ * 기능: 브라우저 전체 화면을 점유하는 배경 컨테이너 정의
+ * --------------------------------------------------------- */
 .login-page-wrapper {
-    height: 100vh;
-    width: 100vw;
-    /* assets 폴더에 dgu_campus.jpg가 있다고 가정합니다 */
+    height: 100vh; /* 뷰포트 높이 100% 점유 */
+    width: 100vw;  /* 뷰포트 너비 100% 점유 */
+
+    /* 배경 이미지 설정 */
     background-image: url('../assets/DGU.ico');
-    background-size: cover;
-    background-position: center;
+    background-size: cover;      /* 요소 크기에 맞춰 이미지 비율 유지하며 꽉 채움 */
+    background-position: center; /* 이미지를 중앙 정렬하여 주요 피사체 노출 보장 */
     background-repeat: no-repeat;
+
     position: relative;
-    overflow: hidden;
+    overflow: hidden; /* 배경 요소로 인한 불필요한 스크롤 발생 방지 */
 }
 
+/* ---------------------------------------------------------
+ * SECTION 2: Visual Overlay Layer
+ * 기능: 배경 이미지와 로그인 카드 사이의 명도 대비를 조절하여 폼 가독성 확보
+ * --------------------------------------------------------- */
 .login-page-overlay {
     height: 100%;
     width: 100%;
-    /* 배경 이미지를 돋보이게 하면서 박스 가독성을 높이는 어두운 막 */
+
+    /* 45% 불투명도의 블랙 필터를 씌워 배경은 은은하게 보여주되,
+       그 위의 하얀색 로그인 카드가 명확히 돋보이도록 처리 */
     background-color: rgba(0, 0, 0, 0.45);
+
+    /* 내부 로그인 카드를 화면 정중앙에 배치 (Flexbox) */
     display: flex;
     align-items: center;
     justify-content: center;

@@ -1,3 +1,23 @@
+/**
+ * =================================================================
+ * [Data] Project History Mock Dataset
+ * 설명: 어플리케이션의 '히스토리(버전 관리)' 기능을 테스트하기 위한 목 데이터셋임.
+ * * [데이터 구조 설계]
+ * 1. Root Key (Number): 프로젝트의 고유 ID (Project ID)
+ * 2. Value (Array): 해당 프로젝트의 변경 이력을 담은 객체 배열 (최신순 정렬 권장)
+ * - id (String): 히스토리 버전의 고유 식별자 (h{project_id}_{version})
+ * - time (String): 변경 시점 표시 문자열
+ * - user (String): 해당 변경을 수행한 작업자 이름
+ * - changeDesc (String): 변경 사항 요약 (Commit Message 역할)
+ * - files (Array): 해당 시점의 '전체 파일 트리' 스냅샷
+ * - id / name / type ('file' | 'folder') / content (파일일 경우만)
+ * - children (Array): 폴더(type: 'folder')일 경우 하위 파일/폴더를 포함하는 재귀 구조
+ * * [사용 방법]
+ * - useHistory(projectId) 훅에서 MOCK_HISTORY[projectId]를 호출하여 특정 프로젝트의 이력 로드.
+ * - 특정 시점을 선택(SelectedHistory)하면 해당 객체 내부의 'files' 배열을 트리 컴포넌트에 전달함.
+ * =================================================================
+ */
+
 export const MOCK_HISTORY = {
     1: [
         {

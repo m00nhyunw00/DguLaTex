@@ -1,47 +1,75 @@
-/* LoginUI.css */
+/**
+ * =================================================================
+ * [Style] Login UI Stylesheet
+ * 설명: 로그인 카드 컴포넌트의 시각적 디자인을 정의
+ * 주요 특징: 반투명 블러(Glassmorphism) 효과를 적용하여 배경 이미지와 조화를 이루며,
+ * 동국대학교 브랜드 컬러(DGU Orange)를 포인트로 활용
+ * =================================================================
+ */
+
+/* ---------------------------------------------------------
+ * SECTION 1: Login Card Container (Glassmorphism)
+ * 기능: 로그인 폼을 감싸는 카드 본체의 질감 및 형태 정의
+ * --------------------------------------------------------- */
 .login-card-glass {
     width: 100%;
     max-width: 420px;
     padding: 3.5rem 2.5rem;
 
-    /* [핵심] 반투명 및 블러 효과 */
-    background: rgba(255, 255, 255, 0.82);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
+    /* [핵심] 배경 이미지 투과를 위한 반투명 및 배경 흐림 효과 */
+    background: rgba(255, 255, 255, 0.82); /* 82% 불투명도의 화이트 배경 */
+    backdrop-filter: blur(12px);          /* 배경 이미지를 12px만큼 흐리게 처리 */
+    -webkit-backdrop-filter: blur(12px); /* Safari 브라우저 호환성 대응 */
 
     border-radius: 20px;
-    border: 1px solid rgba(255, 255, 255, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.3); /* 유리 테두리 느낌의 은은한 외곽선 */
 }
 
+/* ---------------------------------------------------------
+ * SECTION 2: Typography & Branding
+ * 기능: 서비스 로고 및 텍스트의 브랜드 정체성 확립
+ * --------------------------------------------------------- */
 .dgu-logo {
-    color: #f15a24; /* 동국 주황 */
+    color: #f15a24; /* 동국대학교 공식 브랜드 주황색(DGU Orange) */
     font-weight: 800;
     font-size: 2.6rem;
-    letter-spacing: -1.5px;
+    letter-spacing: -1.5px; /* 타이포그래피 밀도를 높여 가독성 및 디자인적 완성도 향상 */
 }
 
+/* ---------------------------------------------------------
+ * SECTION 3: Form Elements (Inputs & Intersections)
+ * 기능: 사용자가 텍스트를 입력하는 필드의 스타일 및 포커스 상태 정의
+ * --------------------------------------------------------- */
 .dgu-input {
-    border-radius: 10px !important;
+    border-radius: 10px !important; /* 입력 필드의 모서리를 부드럽게 라운딩 처리 */
 }
 
+/* 입력 필드 활성화(Focus) 상태의 브랜드 시각 피드백 */
 .dgu-input:focus {
     border-color: #f15a24 !important;
+    /* 주황색 테두리와 함께 은은한 글로우 효과(Shadow)를 부여하여 가시성 확보 */
     box-shadow: 0 0 0 0.25rem rgba(241, 90, 36, 0.15) !important;
 }
 
+/* ---------------------------------------------------------
+ * SECTION 4: Action Buttons
+ * 기능: 로그인 버튼의 물리적 피드백(Hover, Active) 및 색상 정의
+ * --------------------------------------------------------- */
 .btn-dgu-primary {
-    background-color: #f15a24 !important;
+    background-color: #f15a24 !important; /* 메인 액션 버튼에 브랜드 컬러 적용 */
     color: white !important;
     border: none !important;
     border-radius: 10px !important;
-    transition: all 0.2s ease;
+    transition: all 0.2s ease; /* 상태 변화 시 부드러운 애니메이션 효과 적용 */
 }
 
+/* 마우스 호버 시: 색상을 명도를 조절하고 버튼을 살짝 위로 띄움(Floating) */
 .btn-dgu-primary:hover {
     background-color: #d44e1e !important;
     transform: translateY(-2px);
 }
 
+/* 마우스 클릭 시: 버튼이 눌리는 물리적 인터랙션 시뮬레이션 */
 .btn-dgu-primary:active {
     transform: translateY(0);
 }

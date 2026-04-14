@@ -1,21 +1,75 @@
+/**
+ * =================================================================
+ * [Style] History UI Stylesheet (Categorized & Annotated)
+ * 설명: 프로젝트 변경 이력을 조회하는 히스토리 화면의 섹션별 스타일 정의
+ * =================================================================
+ */
+
+/* ---------------------------------------------------------
+ * SECTION 0: Global Layout Wrapper
+ * 기능: 히스토리 모드 전체의 뷰포트 고정 및 영역별 독립 스크롤 정의
+ * --------------------------------------------------------- */
 .history-mode {
     display: flex;
     flex-direction: column;
     height: 100vh;
-    overflow: hidden;
+    overflow: hidden; /* 레이아웃 깨짐 방지를 위한 전역 스크롤 차단 */
 }
 
 .history-mode .main-content {
     display: flex;
     flex: 1;
     overflow: hidden;
-    height: calc(100vh - 56px);
+    /* 상단 네비바 높이 변수를 활용하여 에디터 화면과 동일한 시작점 유지 */
+    height: calc(100vh - var(--nav-height));
 }
 
-/* 1. 왼쪽 사이드바 */
+/* ---------------------------------------------------------
+ * SECTION 1: Top Navigation Bar
+ * 기능: 상단 네비게이션 바 영역
+ * --------------------------------------------------------- */
+.history-mode .nav-back-btn {
+    padding: 0;
+    margin-right: 0.5rem; /* 에디터UI와 동일한 간격으로 고정 효과 구현 */
+}
+
+/* 뒤로가기 화살표 */
+.history-mode .nav-arrow {
+    color: white;
+    font-weight: bold;
+    font-size: 1.5rem;
+    line-height: 1;
+}
+
+/* 프로젝트 타이틀 구분선 */
+.history-mode .project-title-divider {
+    margin-left: 0.5rem;
+    padding-left: 1rem;
+    border-left: 1px solid #444; /* 시각적 노이즈를 최소화한 어두운 구분선 */
+    color: white;
+    font-weight: bold;
+}
+
+/* 메인 복구 버튼 */
+.btn-restore-main {
+    background-color: #28a745 !important;
+    color: white !important;
+    border: none;
+    /* 호버 시 부드러운 밝기 변화를 위한 트랜지션 */
+    transition: filter 0.2s;
+}
+
+.btn-restore-main:hover {
+    filter: brightness(1.1); /* 사용자 상호작용에 대한 즉각적 피드백 */
+}
+
+/* ---------------------------------------------------------
+ * SECTION 2: Left Sidebar (Snapshot File Tree)
+ * 기능: 파일 트리 영역
+ * --------------------------------------------------------- */
 .history-mode .sidebar {
-    width: 240px;
-    background-color: #2c313a !important;
+    width: 250px; /* 에디터 사이드바와 동일 너비로 시각적 안정성 제공 */
+    background-color: #2c313a !important; /* 히스토리 모드 전용 다크 배경 */
     display: flex;
     flex-direction: column;
     flex-shrink: 0;
@@ -29,53 +83,72 @@
     transition: all 0.2s;
 }
 
-.history-mode .tree-item:hover { background-color: #3e4451; color: white; }
-.history-mode .tree-item.active { background-color: #ea5b0c !important; color: white; font-weight: bold; }
+.history-mode .tree-item:hover {
+    background-color: #3e4451; /* 호버 시 가독성 향상을 위한 배경 대비 */
+    color: white;
+}
 
-/* 2. 중앙 에디터 */
+/* 활성 아이템: 현재 뷰어에 출력 중인 파일을 동국대 컬러(DGU Orange)로 강조 */
+.history-mode .tree-item.active {
+    background-color: var(--dgu-orange) !important;
+    color: white !important;
+    font-weight: bold;
+}
+
+/* ---------------------------------------------------------
+ * SECTION 3: Central Editor Area (Read-Only)
+ * 기능: 과거 소스 코드 조회 전용 영역
+ * --------------------------------------------------------- */
 .history-mode .editor-section {
     flex: 1;
     display: flex;
     flex-direction: column;
     min-width: 0;
+    background-color: #ffffff; /* 코드 가독성을 위한 순백색 배경 */
 }
 
-/* 3. 오른쪽 히스토리 리스트 (750px 고정) */
+/* ---------------------------------------------------------
+ * SECTION 4: Right History List (Revision List)
+ * 기능: 버전 타임라인 리스트 및 상세 제어(Download/Rollback) 메뉴 관리 영역
+ * --------------------------------------------------------- */
 .history-list-side {
-    width: 400px;
+    width: 400px; /* 상세 정보 노출을 위한 최적화된 너비 */
     background-color: #f3f5f8;
     display: flex;
     flex-direction: column;
     flex-shrink: 0;
+    /* 에디터 영역과의 경계를 구분하는 은은한 그림자 */
     box-shadow: -4px 0 10px rgba(0,0,0,0.05);
 }
 
 .history-items-container {
     flex: 1;
-    overflow-y: auto;
+    overflow-y: auto; /* 타임라인 초과 시 개별 스크롤 활성화 */
 }
 
+/* 개별 히스토리 항목: 선택 여부에 따른 시각적 상태 변화 정의 */
 .history-item {
     cursor: pointer;
-    border-left: 6px solid transparent;
+    border-left: 6px solid transparent; /* 선택 바(Bar)를 위한 예비 공간 */
     transition: all 0.2s ease;
     background-color: #f8f9fa;
 }
 
-.history-item:hover { background-color: #eceef1; }
-
+/* 선택된 버전: 좌측 보더에 브랜드 컬러를 적용하여 현재 선택 지점 명시 */
 .history-item.selected {
     background-color: #ffffff;
-    border-left-color: #ea5b0c;
+    border-left-color: var(--dgu-orange);
 }
 
-/* 메뉴 관련 스타일 */
+/* 컨텍스트 메뉴(점 3개) 및 드롭다운 시스템 */
 .history-menu-container {
     position: relative;
 }
 
-.menu-trigger-btn:focus {
-    box-shadow: none;
+.menu-trigger-btn {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #6c757d;
 }
 
 .history-dropdown {
@@ -88,32 +161,30 @@
     border-radius: 6px;
     padding: 6px 0;
     box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+    border: 1px solid #dee2e6;
 }
 
 .history-dropdown .dropdown-item {
     padding: 10px 15px;
     font-size: 0.85rem;
     cursor: pointer;
+    color: #212529;
 }
 
-.history-dropdown .dropdown-item:hover {
-    background-color: #fff1eb;
-    color: #ea5b0c;
+/* 드롭다운 내 롤백 메뉴 */
+.dropdown-item-restore {
+    color: #28a745 !important;
+    font-weight: bold;
 }
 
-/* 사용자 정보 스타일 */
+.dropdown-item-restore:hover {
+    background-color: #eafaf1 !important;
+}
+
+/* 사용자 식별 아바타: 동국대 상징색 활용 */
 .user-avatar-rect {
     width: 14px;
     height: 14px;
-    background-color: #ea5b0c;
+    background-color: var(--dgu-orange);
     border-radius: 2px;
-}
-
-/* 롤백 버튼 (DGU Orange) */
-.btn-success {
-    background-color: #ea5b0c !important;
-    border-color: #ea5b0c !important;
-}
-.btn-success:hover {
-    background-color: #d44e0a !important;
 }

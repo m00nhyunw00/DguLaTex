@@ -1,3 +1,25 @@
+/**
+ * =================================================================
+ * [Data] Global Projects Mock Dataset
+ * 설명: 대시보드 리스트 출력 및 에디터 초기 로드를 위한 프로젝트 전체 데이터셋임.
+ * * [데이터 구조 설계]
+ * - id (Number): 프로젝트 고유 식별자
+ * - title (String): 대시보드에 표시될 프로젝트 제목
+ * - owner (String): 소유자 식별자 ('me'는 본인, 그 외 이름은 공유받은 프로젝트로 분류)
+ * - updated (String): 마지막 수정 일자 (YYYY-MM-DD)
+ * - files (Array): 프로젝트 내 파일/폴더의 계층 구조 (Tree Structure)
+ * - id (String): 노드 고유 ID (p{project_id}_{f|d}_{index})
+ * - name (String): 파일명 또는 폴더명 (확장자 포함)
+ * - type (String): 'file' 또는 'folder'로 구분
+ * - content (String): 파일일 경우 내포된 텍스트 데이터 (LaTeX 소스 등)
+ * - children (Array): 폴더일 경우 하위 노드들을 재귀적으로 포함
+ * * [주요 활용 지점]
+ * 1. Dashboard: owner 값에 따라 '나의 프로젝트'와 '공유받은 프로젝트' 필터링 수행.
+ * 2. Editor: 프로젝트 진입 시 해당 files 배열을 useEditor 훅의 초기 상태로 주입.
+ * 3. Search/Sort: title 및 updated 필드를 활용한 리스트 정렬 및 검색 기능의 대상.
+ * =================================================================
+ */
+
 export const MOCK_PROJECTS = [
     {
         id: 1,
