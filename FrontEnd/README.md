@@ -53,7 +53,7 @@
     - 서비스로부터 전달받은 데이터를 훅 내부 상태(`projects`)에 저장함
 6. **화면 렌더링 (`DashboardUI.jsx`)**
     - 저장된 데이터를 UI 컴포넌트로 전달하여 사용자 화면에 최종 출력함
-- DB 연결 전에는 훅에서 테스트 데이터 (`projectData.js`) 를 직접 훅 내부 상태(`projects`)에 저장함~~~~ 
+- DB 연결 전에는 훅에서 테스트 데이터 (`projectData.js`) 를 직접 훅 내부 상태(`projects`)에 저장함
 
 <br>
 
