@@ -40,13 +40,17 @@ DguLaTeX는 동국대학교 학생 전용 웹 기반 LaTeX 편집 및 협업 툴
 <details>
 <summary>📂 Frontend 구조 (React + Vite)</summary>
 
-| 폴더명 | 역할 | 설명 |
-| :--- | :---: | :--- |
-| **src/api/** | **Model** | API 통신 함수 (데이터/서버 요청) |
-| **src/assets/** | - | 로고, 이미지, 아이콘(Favicon) 등 정적 자원 |
-| **src/components/** | **View** | 재사용 가능한 UI 부품 (버튼, 모달 등) |
-| **src/hooks/** | **Controller** | 비즈니스 로직 및 상태 관리 (Custom Hooks) |
-| **src/pages/** | **View** | 독립적인 페이지 화면 단위 |
+| 폴더명                 |           역할            | 설명                                   |
+|:--------------------|:-----------------------:|:-------------------------------------| 
+| **src/api/**        |      **Protocol**       | 백엔드 통신을 위한 기본 설정 (Axios Instance 등)  |
+| **src/services/**   |    **Model (Data)**     | 서버(DB)에 데이터를 요청하는 순수 통신 로직           |
+| **src/hooks/**      |     **Controller**      | 비즈니스 로직 처리 및 상태 관리 (Custom Hooks)    | 
+| **src/pages/**      |    **View (Layout)**    | 훅과 UI를 조립하여 구성하는 독립적인 화면 단위          | 
+| **src/components/** |      **View (UI)**      | 재사용 가능한 순수 디자인 부품 (Atomic Components) |
+| **src/testdata/**   |      **Mock Data**      | API 연결 전 사용하는 임시 테스트 데이터 모음          |
+| **src/assets/**     |       **Static**        | 로고, 이미지, 아이콘 등 정적 자원 보관              | 
+| **pakage.json**     | **Manifest** | 프로젝트 정보, 라이브러리 의존성 및 실행 스크립트 관리 |
+| **.env**            | **Environment Variables**   | 서버 주소 등 보안 및 환경 설정 변수 관리 (공개 공유 X) |
 
 </details>
 
