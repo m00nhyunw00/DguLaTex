@@ -1,37 +1,70 @@
 /**
  * =================================================================
  * [Hook] Editor Business Logic Controller
- * 설명: 메인 에디터의 상태 관리 및 Monaco Editor 인스턴스와의 상호작용을 제어
- * 주요 기능: 파일 트리 내 객체 탐색, 실시간 코드 동기화, 에디터 명령(스니펫 삽입) 및 설정 관리
+ * 설명: 메인 에디터 상태 관리 및 프리뷰 액션 제어
+ * 수정: 다운로드 로직과 동일한 위계로 오류 확인(onCheckErrors) 핸들러 배치
  * =================================================================
  */
 
 import { useState, useEffect, useRef } from 'react';
 import { MOCK_PROJECTS } from '../testdata/projectData.js';
 
-/**
- * @param {string} projectId - 편집할 프로젝트의 고유 식별자
- */
 export const useEditor = (projectId) => {
-
-    /* ---------------------------------------------------------
-     * SECTION 1: State & Ref Definitions
-     * --------------------------------------------------------- */
-
-    // 프로젝트 리스트에서 해당 ID의 파일을 찾아 초기 상태로 설정
     const initialProject = MOCK_PROJECTS.find(p => p.id === projectId);
     const [files, setFiles] = useState(initialProject?.files || []);
-
-    // 현재 에디터 화면에 렌더링 중인 파일의 고유 ID
     const [activeFileId, setActiveFileId] = useState('');
-
-    // Monaco Editor 인스턴스 참조 변수
     const editorRef = useRef(null);
 
+    // 자동 컴파일 상태 (팝업 없이 토글)
+    const [isAutoCompile, setIsAutoCompile] = useState(false);
+
+    // 컨텍스트 메뉴 상태
+    const [contextMenu, setContextMenu] = useState({
+        visible: false, x: 0, y: 0, targetId: null, targetType: null
+    });
+
     /* ---------------------------------------------------------
-     * SECTION 2: Data Navigation (Recursive)
+     * SECTION: Interaction Handlers (다운로드와 동일 로직 적용)
      * --------------------------------------------------------- */
 
+    /** [ACTION] 자동 컴파일 토글 */
+    const toggleAutoCompile = () => setIsAutoCompile(prev => !prev);
+
+    /** [ACTION] 수동 컴파일 실행 */
+    const onCompile = () => alert("LaTeX 컴파일을 시작합니다.");
+
+    /** [ACTION] 초록색 버튼: PDF 다운로드 (정상 작동 중) */
+    const onDownload = () => alert("PDF 다운로드를 시작합니다.");
+
+    /** [ACTION] 노란색 버튼: 컴파일 에러 확인 (다운로드와 동일 구조) */
+    const onCheckErrors = () => alert("컴파일 에러 확인: 현재 발견된 오류가 없습니다.");
+
+    /* ---------------------------------------------------------
+     * SECTION: Context Menu & File Logic (생략 없음)
+     * --------------------------------------------------------- */
+    const handleContextMenu = (e, item) => {
+        e.preventDefault();
+        e.stopPropagation();
+        setContextMenu({ visible: true, x: e.pageX, y: e.pageY, targetId: item.id, targetType: item.type });
+    };
+
+    const closeContextMenu = () => setContextMenu(prev => ({ ...prev, visible: false }));
+
+    useEffect(() => {
+        const handleClickOutside = () => closeContextMenu();
+        window.addEventListener('click', handleClickOutside);
+        return () => window.removeEventListener('click', handleClickOutside);
+    }, []);
+
+    const handleFileAction = (actionType) => {
+        const { targetId } = contextMenu;
+        alert(`[${actionType}] 대상 ID: ${targetId}`);
+        closeContextMenu();
+    };
+
+    /* ---------------------------------------------------------
+     * SECTION: Editor Helper Logic
+     * --------------------------------------------------------- */
     const findFileById = (items, id) => {
         if (!items || !Array.isArray(items)) return null;
         for (const item of items) {
@@ -46,10 +79,6 @@ export const useEditor = (projectId) => {
 
     const activeFile = findFileById(files, activeFileId);
 
-    /* ---------------------------------------------------------
-     * SECTION 3: Initialization
-     * --------------------------------------------------------- */
-
     useEffect(() => {
         if (files.length > 0) {
             const firstFile = files.find(f => f.type === 'file');
@@ -57,29 +86,7 @@ export const useEditor = (projectId) => {
         }
     }, []);
 
-    /* ---------------------------------------------------------
-     * SECTION 4: Monaco Editor Integrations
-     * --------------------------------------------------------- */
-
-    const handleEditorDidMount = (editor) => {
-        editorRef.current = editor;
-    };
-
-    const insertSnippet = (snippet) => {
-        if (!editorRef.current) return;
-        const editor = editorRef.current;
-        const selection = editor.getSelection();
-        const model = editor.getModel();
-        const selectedText = model.getValueInRange(selection);
-        const newText = snippet.replace('${selected}', selectedText);
-
-        editor.executeEdits('snippet', [{
-            range: selection,
-            text: newText,
-            forceMoveMarkers: true
-        }]);
-        editor.focus();
-    };
+    const handleEditorDidMount = (editor) => { editorRef.current = editor; };
 
     const onEditorChange = (value) => {
         if (!activeFileId) return;
@@ -91,32 +98,22 @@ export const useEditor = (projectId) => {
         setFiles(prev => updateRecursive(prev));
     };
 
-    /* ---------------------------------------------------------
-     * SECTION 5: Editor Configurations
-     * --------------------------------------------------------- */
-    const editorOptions = {
-        fontSize: 14,
-        minimap: { enabled: false },
-        wordWrap: 'on',
-        scrollBeyondLastLine: false,
-        automaticLayout: true,
-        smoothScrolling: true,
-    };
-
     return {
         files,
         activeFile,
         setActiveFileId,
         onEditorChange,
         handleEditorDidMount,
-        insertSnippet,
-        editorOptions,
-        // PDF 관련 인터페이스 (추후 로직 추가용)
+        editorOptions: { fontSize: 14, minimap: { enabled: false }, automaticLayout: true },
+        contextMenu,
+        handleContextMenu,
+        handleFileAction,
+        isAutoCompile,
+        toggleAutoCompile,
+        onCompile,
+        onDownload,
+        onCheckErrors, // 이 값을 PreviewUI가 반드시 받아야 함
         pdfUrl: null,
-        isAutoCompile: false,
-        toggleAutoCompile: () => {},
-        onCompile: () => {},
-        onDownload: () => {},
         currentPage: 1,
         totalPages: 1,
         setPage: () => {}

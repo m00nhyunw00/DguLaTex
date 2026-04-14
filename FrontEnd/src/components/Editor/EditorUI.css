@@ -2,13 +2,12 @@
  * =================================================================
  * [Style] Editor UI Stylesheet (Categorized)
  * 설명: 메인 에디팅 화면의 레이아웃 및 모든 컴포넌트 스타일을 정의
- * 주요 특징: 3단 Flex 레이아웃, 에디터 툴바, PDF 뷰어 및 플로팅 UI 제어
+ * 주요 특징: 대시보드와 버튼 규격(Size, Padding, Font)을 완전히 일치시킴
  * =================================================================
  */
 
 /* ---------------------------------------------------------
  * SECTION 0: Root Layout & Main Framework
- * 기능: 상단 바를 제외한 전체 화면을 3단으로 분할하는 기본 틀
  * --------------------------------------------------------- */
 .full-layout {
     display: flex;
@@ -22,27 +21,24 @@
     display: flex;
     flex: 1;
     overflow: hidden;
-    /* 네비게이션 바 높이(60px)를 제외한 가용 영역 */
     height: calc(100vh - var(--nav-height));
 }
 
 /* ---------------------------------------------------------
- * SECTION 1: Top Navigation Bar
- * 기능 : 상단 네비게이션 바 영역
+ * SECTION 1: Top Navigation Bar (Dashboard Unified)
+ * 기능: 대시보드와 버튼 크기, 폰트, 호버 모션을 100% 일치시킴
  * --------------------------------------------------------- */
 .nav-back-btn {
     padding: 0;
-    margin-right: 0.5rem; /* 화살표와 텍스트 사이의 여백 규격화 */
+    margin-right: 0.5rem;
 }
 
-/* 뒤로가기 화살표 */
 .nav-arrow {
     color: white;
     font-weight: bold;
     font-size: 1.5rem;
     line-height: 1;
     display: inline-block;
-    /* 호버 시 부드러운 확대 효과를 위한 전환 설정 */
     transition: transform 0.2s;
 }
 
@@ -54,14 +50,14 @@
 .project-title-divider {
     margin-left: 0.5rem;
     padding-left: 1rem;
-    border-left: 1px solid #444; /* 프로젝트명과 버튼 영역을 구분하는 수직 가이드라인 */
+    border-left: 1px solid #444;
     color: white;
     font-weight: bold;
 }
 
-/* 히스토리 진입 버튼: 일반 텍스트와 구분되는 버튼 형태의 질감 부여 */
+/* 히스토리 진입 버튼 */
 .btn-history-custom {
-    background-color: #3e4451; /* 네비바 배경보다 밝은 그레이로 버튼 입체감 확보 */
+    background-color: #3e4451;
     color: #ffffff !important;
     border: 1px solid #555;
     transition: all 0.2s;
@@ -73,21 +69,26 @@
     color: var(--dgu-orange) !important;
 }
 
-/* 로그아웃 버튼: 동국대 컬러(DGU Orange)를 활용한 시각적 종착점 제공 */
-.btn-logout-custom {
-    background-color: var(--dgu-orange);
-    color: white;
-    border: none;
-    transition: filter 0.2s;
+/* [규격 통일] 대시보드와 동일한 외곽선 스타일 및 사이즈 설정 */
+.btn-outline-light {
+    border: 1px solid rgba(255, 255, 255, 0.5) !important;
+    color: white !important;
+    /* 대시보드 btn-sm 규격 강제 적용 */
+    padding: 0.25rem 0.5rem !important;
+    font-size: 0.875rem !important;
+    line-height: 1.5 !important;
+    border-radius: 0.2rem !important;
+    transition: all 0.2s ease-in-out;
 }
 
-.btn-logout-custom:hover {
-    filter: brightness(1.1); /* 미세한 명도 조절로 클릭 유도 */
+.btn-outline-light:hover {
+    background-color: white !important;
+    color: var(--dgu-orange) !important;
+    border-color: white !important;
 }
 
 /* ---------------------------------------------------------
  * SECTION 2: Left Sidebar (File Tree)
- * 기능 : 파일 트리 영역
  * --------------------------------------------------------- */
 .sidebar {
     width: 250px;
@@ -112,16 +113,13 @@
     align-items: center;
     color: #495057;
     transition: background-color 0.1s, color 0.1s;
-    overflow: hidden;
-    text-overflow: ellipsis;
 }
 
 .tree-item:hover {
-    background-color: #fff1eb; /* 호버 시 동국대 컬러의 연한 톤 활용 */
+    background-color: #fff1eb;
     color: var(--dgu-orange);
 }
 
-/* 현재 에디터에서 선택된 파일 강조: 동국대 컬러 적용 */
 .tree-item.active {
     background-color: var(--dgu-orange) !important;
     color: white !important;
@@ -130,7 +128,6 @@
 
 /* ---------------------------------------------------------
  * SECTION 3: Central Editor Section
- * 기능: 코드 작성 영역 및 상단 툴바 스타일
  * --------------------------------------------------------- */
 .editor-section {
     flex: 1.5;
@@ -156,37 +153,21 @@
 
 /* ---------------------------------------------------------
  * SECTION 4: Right Preview & PDF Navigation
- * 기능: PDF 결과물 출력 영역 및 플로팅 컨트롤러 스타일
  * --------------------------------------------------------- */
 .preview-section {
     flex: 1.2;
     min-width: 400px;
     display: flex;
     flex-direction: column;
-    background-color: #f3f5f8; /* PDF 문서 가독성을 위한 중성색 배경 처리 */
+    background-color: #f3f5f8;
 }
 
 .pdf-viewer-container {
     flex: 1;
     overflow: hidden;
-    background-color: #525659; /* PDF 배경색 */
+    background-color: #525659;
 }
 
-.pdf-frame {
-    border: none;
-}
-
-.no-pdf-icon {
-    font-size: 3rem;
-}
-
-.page-info-text {
-    min-width: 70px;
-    text-align: center;
-    user-select: none;
-}
-
-/* [추가] PDF 하단 페이지 내비게이션 플로팅 바 */
 .page-nav-overlay {
     z-index: 1000;
     opacity: 0.75;
@@ -197,7 +178,6 @@
     opacity: 1;
 }
 
-/* 페이지 이동 둥근 버튼 */
 .page-nav-overlay .btn-dark {
     width: 32px;
     height: 32px;
@@ -206,9 +186,50 @@
     justify-content: center;
     background-color: #212529;
     border: none;
-    font-size: 0.7rem;
 }
 
 .page-nav-overlay .btn-dark:hover {
-    background-color: var(--dgu-orange); /* 버튼 호버 시 포인트 컬러 */
+    background-color: var(--dgu-orange);
 }
+
+/* ---------------------------------------------------------
+ * SECTION 5: Overleaf Style Context Menu
+ * --------------------------------------------------------- */
+.editor-context-menu {
+    position: fixed;
+    background: white;
+    min-width: 200px;
+    border: 1px solid #dee2e6;
+    border-radius: 4px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    z-index: 3000;
+    padding: 5px 0;
+    animation: fadeIn 0.1s ease-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: scale(0.98); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+.menu-item {
+    padding: 8px 16px;
+    font-size: 0.85rem;
+    color: #333;
+    cursor: pointer;
+    transition: background 0.1s;
+}
+
+.menu-item:hover {
+    background-color: #f1f3f5;
+    color: var(--dgu-orange);
+}
+
+.menu-divider {
+    height: 1px;
+    background-color: #eee;
+    margin: 4px 0;
+}
+
+.text-primary { color: #007bff !important; }
+.text-danger { color: #dc3545 !important; }

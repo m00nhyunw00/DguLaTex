@@ -1,14 +1,14 @@
 /**
  * =================================================================
  * [View] File Tree UI Component
- * 설명: 편집 화면 좌측의 파일 탐색기 영역 전체를 관리
+ * 설명: 재귀적으로 렌더링되는 노드들에게 컨텍스트 메뉴 핸들러 전파
  * =================================================================
  */
 
 import React from 'react';
 import FileTreeNode from './FileTreeNode.jsx';
 
-function FileTreeUI({ files, activeFileId, setActiveFileId }) {
+function FileTreeUI({ files, activeFileId, setActiveFileId, handleContextMenu }) {
     return (
         <aside className="sidebar border-end d-flex flex-column">
             <div className="p-2 border-bottom small text-muted bg-light d-flex justify-content-between align-items-center">
@@ -24,6 +24,7 @@ function FileTreeUI({ files, activeFileId, setActiveFileId }) {
                             item={file}
                             activeFileId={activeFileId}
                             setActiveFileId={setActiveFileId}
+                            handleContextMenu={handleContextMenu} // 핸들러 전달
                             depth={0}
                         />
                     ))

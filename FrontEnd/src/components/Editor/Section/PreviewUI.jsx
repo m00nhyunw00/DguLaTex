@@ -2,6 +2,7 @@
  * =================================================================
  * [View] Preview UI Component
  * 설명: LaTeX 컴파일 결과인 PDF 시각화 및 제어 인터페이스를 제공
+ * 수정: 누락되었던 onCheckErrors 프롭 추가 및 노란색 버튼 연결
  * =================================================================
  */
 
@@ -13,6 +14,7 @@ function PreviewUI({
                        toggleAutoCompile,
                        onCompile,
                        onDownload,
+                       onCheckErrors, // [수정] 누락되었던 프롭 추가
                        currentPage,
                        totalPages,
                        setPage
@@ -39,7 +41,14 @@ function PreviewUI({
                 </div>
 
                 <div className="d-flex gap-1">
-                    <button className="btn btn-sm btn-outline-warning" title="Logs">⚠️</button>
+                    {/* [수정] 노란색 버튼에 onClick={onCheckErrors} 연결 */}
+                    <button
+                        className="btn btn-sm btn-outline-warning"
+                        onClick={onCheckErrors}
+                        title="Logs"
+                    >
+                        ⚠️
+                    </button>
                     <button className="btn btn-sm btn-outline-success" onClick={onDownload} title="Download PDF">⬇</button>
                 </div>
             </div>

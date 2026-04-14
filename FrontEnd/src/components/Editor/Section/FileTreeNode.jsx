@@ -1,48 +1,48 @@
 /**
  * =================================================================
  * [View] File Tree Node Component
- * 설명: 파일 시스템의 개별 항목(파일/폴더)을 계층적으로 출력
- * 주요 기능: 재귀 호출을 통한 트리 구조 시각화 및 선택 이벤트 전파
+ * 설명: 개별 파일/폴더 항목을 렌더링하며, 우클릭 시 본인의 타입을 정확히 전달
  * =================================================================
  */
 
-import React from 'react';
+import React, { useState } from 'react';
 
-/**
- * @param {Object} item - 노드 데이터 (id, name, type, children 등)
- * @param {number} depth - 들여쓰기 깊이
- * @param {string} activeFileId - 활성화된 파일 ID
- * @param {Function} setActiveFileId - 파일 선택 함수
- */
-function FileTreeNode({ item, depth = 0, activeFileId, setActiveFileId }) {
-    const isActive = activeFileId === item.id;
+function FileTreeNode({ item, activeFileId, setActiveFileId, handleContextMenu, depth }) {
+    const [isOpen, setIsOpen] = useState(true);
+
+    const handleClick = (e) => {
+        e.stopPropagation();
+        if (item.type === 'folder') {
+            setIsOpen(!isOpen);
+        } else {
+            setActiveFileId(item.id);
+        }
+    };
 
     return (
         <div className="tree-node-wrapper">
-            {/* ---------------------------------------------------------
-            * SECTION 1: Single Item Row
-            * --------------------------------------------------------- */}
+            {/* 항목 렌더링 영역 - 여기서 우클릭 이벤트 발생 시 본인의 item 정보를 넘김 */}
             <div
-                className={`tree-item ${isActive ? 'active' : ''}`}
-                style={{ paddingLeft: `${depth * 15 + 12}px` }}
-                onClick={() => item.type === 'file' && setActiveFileId(item.id)}
+                className={`tree-item ${activeFileId === item.id ? 'active' : ''}`}
+                style={{ paddingLeft: `${depth * 15 + 15}px` }}
+                onClick={handleClick}
+                onContextMenu={(e) => handleContextMenu(e, item)} // 핵심: 여기서 item.type이 결정됨
             >
-                <span className="me-2">{item.type === 'folder' ? '📁' : '📄'}</span>
-                <span className="node-name">{item.name}</span>
+                <span className="me-2">{item.type === 'folder' ? (isOpen ? '📂' : '📁') : '📄'}</span>
+                <span>{item.name}</span>
             </div>
 
-            {/* ---------------------------------------------------------
-            * SECTION 2: Recursive Children Rendering
-            * --------------------------------------------------------- */}
-            {item.children && item.children.length > 0 && (
-                <div className="node-children">
+            {/* 폴더일 경우 자식 노드 재귀 렌더링 */}
+            {item.type === 'folder' && isOpen && item.children && (
+                <div className="tree-children">
                     {item.children.map((child) => (
                         <FileTreeNode
                             key={child.id}
                             item={child}
-                            depth={depth + 1}
                             activeFileId={activeFileId}
                             setActiveFileId={setActiveFileId}
+                            handleContextMenu={handleContextMenu} // 하위로 계속 전파
+                            depth={depth + 1}
                         />
                     ))}
                 </div>
