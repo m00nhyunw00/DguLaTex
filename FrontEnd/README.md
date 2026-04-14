@@ -17,8 +17,8 @@
 | **src/components/** |      **View (UI)**      | 재사용 가능한 순수 디자인 부품 (Atomic Components) |
 | **src/testdata/**   |      **Mock Data**      | API 연결 전 사용하는 임시 테스트 데이터 모음          |
 | **src/assets/**     |       **Static**        | 로고, 이미지, 아이콘 등 정적 자원 보관              | 
-| **.env**            | Environment Variables   | 서버 주소 등 보안 및 환경 설정 변수 관리 |
-| **pakage.json**     | Manifest   | 프로젝트 정보, 라이브러리 의존성 및 실행 스크립트 관리 |
+| **.env**            | **Environment Variables**   | 서버 주소 등 보안 및 환경 설정 변수 관리 |
+| **pakage.json**     | **Manifest** | 프로젝트 정보, 라이브러리 의존성 및 실행 스크립트 관리 |
 
 <br>
 
